@@ -1,0 +1,54 @@
+{
+  "name": "tubutler",
+  "version": "0.1.0",
+  "description": "Simple and useful YouTube Player for Desktop",
+  "main": "dist/main.js",
+  "author": "joe-re <joe.tialtngo@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "electron": "electron .",
+    "clean": "rm -rf dist && rm -rf release",
+    "package": "npm run clean && NODE_ENV=production npm run build && npm run package:css && npm run package:font && cp ./prod_resources/* ./dist/ && electron-packager dist \"tubutler\" --all --out=release --icon=\"resource/icon\"",
+    "package:css": "mkdir -p dist/css && cp ./node_modules/photon/dist/css/photon.css ./dist/css",
+    "package:font": "mkdir -p dist/fonts && cp ./node_modules/photon/dist/fonts/* ./dist/fonts",
+    "zip": "gulp zip",
+    "release": "npm run package && npm run zip"
+  },
+  "homepage": "https://github.com/joe-re/tubutler",
+  "bugs": "https://github.com/joe-re/tubutler/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joe-re/tubutler.git"
+  },
+  "dependencies": {
+    "battle-ax": "^0.0.1",
+    "date-fns": "^1.28.5",
+    "file-loader": "^0.11.2",
+    "mousetrap": "^1.6.1",
+    "photon": "github:connors/photon",
+    "url-search-params": "^0.9.0",
+    "vue": "^2.3.4",
+    "vue-class-component": "^5.0.1",
+    "vue-property-decorator": "^5.1.0",
+    "vue-router": "^2.7.0",
+    "vuex": "^2.3.1",
+    "vuex-class": "^0.2.0",
+    "vuex-connect": "^1.2.0",
+    "youtube-player": "^5.4.0"
+  },
+  "devDependencies": {
+    "@types/mousetrap": "^1.5.34",
+    "css-loader": "^0.28.4",
+    "electron": "1.6.11",
+    "electron-packager": "^8.7.2",
+    "glob": "^7.1.2",
+    "gulp": "^3.9.1",
+    "ts-loader": "^2.1.0",
+    "typescript": "^2.3.4",
+    "url-loader": "^0.5.9",
+    "vue-loader": "^12.2.1",
+    "vue-template-compiler": "^2.3.4",
+    "webpack": "^2.6.1"
+  }
+}
